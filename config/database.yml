@@ -21,5 +21,12 @@ test:
   database: db/test.sqlite3
 
 production:
+  # <<: *default
+  # database: db/production.sqlite3
   <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV['RDS_DATABASE'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOST'] %>
+  # post: 5432
+  port: <%= ENV['RDS_PORT'] %>
